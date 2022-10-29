@@ -1,10 +1,18 @@
 package sample.Controllers;
 
+import com.mysql.cj.x.protobuf.MysqlxPrepare;
+import javafx.application.Platform;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
+import javafx.util.Callback;
 import sample.Database.AppointmentQueries;
 import sample.Database.ContactQueries;
 import sample.Database.CustomerQueries;
@@ -22,8 +30,7 @@ public class ReportsController implements Initializable {
 
     @FXML
     private Button exitButton;
-    @FXML
-    private TextArea textDisplay;
+
     @FXML
     private RadioButton customerRadio;
     @FXML
@@ -32,6 +39,40 @@ public class ReportsController implements Initializable {
     private ComboBox<String> variableComboBox;
     @FXML
     private RadioButton contactRadio;
+    @FXML
+    private TableView<Appointments> appointmentsTableView;
+    @FXML
+    private TableColumn<?, ?> colApptId;
+
+    @FXML
+    private TableColumn<?, ?> colCustomerId;
+
+    @FXML
+    private TableColumn<?, ?> colDescr;
+
+    @FXML
+    private TableColumn<?, ?> colEnd;
+
+    @FXML
+    private TableColumn<?, ?> colMonth;
+
+    @FXML
+    private TableColumn<?, ?> colStart;
+
+    @FXML
+    private TableColumn<?, ?> colTitle;
+
+    @FXML
+    private TableColumn<?, ?> colTotal;
+
+    @FXML
+    private TableColumn<?, ?> colType;
+    @FXML
+    private TableColumn<?,?> colType2;
+
+
+
+
 
     /**
      * changes display based on users choices of radio button
@@ -39,29 +80,33 @@ public class ReportsController implements Initializable {
      */
     private void variableComboBoxAction(){
         if(contactRadio.isSelected()){
-            textDisplay.clear();
+            hideTypeColumns();
+            showAppointmentColumns();
             String contactName = variableComboBox.getSelectionModel().getSelectedItem();
             ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentsByContactName(contactName);
-            StringBuilder contactReport = new StringBuilder();
-            contactReport.append(String.join("                     ", "Appt ID", "Title", "Description", "Type","Start                ","End", "       Customer ID", "\n"));
-            contactReport.append("\n");
-            for (Appointments appointment :
-                    appointmentsObservableList) {
-                contactReport.append(String.join("                    ",String.valueOf(appointment.getAppointmentId()), appointment.getTitle(), appointment.getDescription(), appointment.getType(), appointment.getStartTime().toString(),appointment.getEndTime().toString(), String.valueOf(appointment.getCustomerId()), "\n"));
-            }
-            textDisplay.setText(contactReport.toString());
+            colApptId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+            colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+            colDescr.setCellValueFactory(new PropertyValueFactory<>("description"));
+            colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+            colStart.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+            colEnd.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+            colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+            appointmentsTableView.setItems(appointmentsObservableList);
+
         }else if(customerRadio.isSelected()){
-            textDisplay.clear();
+            hideTypeColumns();
+            showAppointmentColumns();
             String customerName = variableComboBox.getSelectionModel().getSelectedItem();
             ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentsObservableListByCustomerName(customerName);
-            StringBuilder customerReport = new StringBuilder();
-            customerReport.append(String.join("                     ", "Appt ID", "Title", "Description", "Type","Start                ","End", "       Customer ID", "\n"));
-            customerReport.append("\n");
-            for (Appointments appointment :
-                    appointmentsObservableList) {
-                customerReport.append(String.join("                    ",String.valueOf(appointment.getAppointmentId()), appointment.getTitle(), appointment.getDescription(), appointment.getType(), appointment.getStartTime().toString(),appointment.getEndTime().toString(), String.valueOf(appointment.getContactId()), "\n"));
-            }
-            textDisplay.setText(customerReport.toString());
+            colApptId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
+            colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
+            colDescr.setCellValueFactory(new PropertyValueFactory<>("description"));
+            colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+            colStart.setCellValueFactory(new PropertyValueFactory<>("startTime"));
+            colEnd.setCellValueFactory(new PropertyValueFactory<>("endTime"));
+            colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
+            appointmentsTableView.setItems(appointmentsObservableList);
+
         }else{
             Main.createAlert(Alert.AlertType.ERROR, "Type Report Selected. Select other report type.");
         }
@@ -76,7 +121,34 @@ public class ReportsController implements Initializable {
         }
         Main.closeScene(exitButton);
     }
-
+    private void hideAppointmentColumns(){
+        colApptId.setVisible(false);
+        colCustomerId.setVisible(false);
+        colStart.setVisible(false);
+        colEnd.setVisible(false);
+        colDescr.setVisible(false);
+        colTitle.setVisible(false);
+        colType.setVisible(false);
+    }
+    private void hideTypeColumns(){
+        colMonth.setVisible(false);
+        colType2.setVisible(false);
+        colTotal.setVisible(false);
+    }
+    private void showTypeColumns(){
+        colMonth.setVisible(true);
+        colType2.setVisible(true);
+        colTotal.setVisible(true);
+    }
+    private void showAppointmentColumns(){
+        colApptId.setVisible(true);
+        colCustomerId.setVisible(true);
+        colStart.setVisible(true);
+        colEnd.setVisible(true);
+        colDescr.setVisible(true);
+        colTitle.setVisible(true);
+        colType.setVisible(true);
+    }
 
 
     @Override
@@ -95,8 +167,9 @@ public class ReportsController implements Initializable {
         });
         tg.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
             if(t1.equals(customerRadio)){
-                textDisplay.clear();
-
+                variableComboBox.setVisible(true);
+                hideTypeColumns();
+                showAppointmentColumns();
                 ObservableList<String> customerNames = FXCollections.observableArrayList();
                 ObservableList<Customers> customers = null;
                 try {
@@ -112,20 +185,19 @@ public class ReportsController implements Initializable {
                 variableComboBox.getSelectionModel().select(1);
             }
             if(t1.equals(typeRadio)){
-                textDisplay.clear();
+                variableComboBox.setVisible(false);
+                hideAppointmentColumns();
+                showTypeColumns();
                 ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentCounts();
-                StringBuilder typeReport = new StringBuilder();
-                typeReport.append(String.join("      ", "Month", "Appointment Type", "Total", "\n"));
-                typeReport.append("\n");
-                for (Appointments appointment :
-                        appointmentsObservableList) {
-                    typeReport.append(String.join("      ", appointment.getMonth(), appointment.getType(), String.valueOf(appointment.getTotal()), "\n"));
-                }
-                textDisplay.setText(typeReport.toString());
+                colMonth.setCellValueFactory(new PropertyValueFactory<>("month"));
+                colType2.setCellValueFactory(new PropertyValueFactory<>("type"));
+                colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+                appointmentsTableView.setItems(appointmentsObservableList);
             }
             if(t1.equals(contactRadio)){
-                textDisplay.clear();
-
+                variableComboBox.setVisible(true);
+                hideTypeColumns();
+                showAppointmentColumns();
                 ObservableList<String> contactNames = FXCollections.observableArrayList();
                 ObservableList<Contacts> contacts = ContactQueries.getContactsObservableList();
                 for (Contacts contact : contacts

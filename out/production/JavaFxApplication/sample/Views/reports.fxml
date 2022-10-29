@@ -4,7 +4,8 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
@@ -16,7 +17,6 @@
             <font>
                 <Font size="29.0" />
             </font></Label>
-        <TextArea fx:id="textDisplay" layoutX="15.0" layoutY="51.0" prefHeight="500.0" prefWidth="815.0" />
         <TitledPane animated="false" layoutX="15.0" layoutY="551.0" prefHeight="104.0" prefWidth="303.0" text="Report Options">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="78.0" prefWidth="288.0">
@@ -29,6 +29,19 @@
                 </AnchorPane>
             </content>
         </TitledPane>
+      <TableView fx:id="appointmentsTableView" layoutX="83.0" layoutY="58.0" prefHeight="479.0" prefWidth="679.0">
+        <columns>
+          <TableColumn fx:id="colApptId" prefWidth="75.0" text="Appt ID" />
+          <TableColumn fx:id="colTitle" prefWidth="75.0" text="Title" />
+            <TableColumn fx:id="colDescr" prefWidth="75.0" text="Description" />
+            <TableColumn fx:id="colType" prefWidth="75.0" text="Type" />
+            <TableColumn fx:id="colStart" prefWidth="75.0" text="Start" />
+            <TableColumn fx:id="colEnd" prefWidth="75.0" text="End" />
+            <TableColumn fx:id="colCustomerId" prefWidth="75.0" text="Customer ID" />
+            <TableColumn fx:id="colMonth" prefWidth="75.0" text="Month" />
+            <TableColumn fx:id="colType2" prefWidth="50.0" text="Type" />
+            <TableColumn fx:id="colTotal" prefWidth="100.0" text="Total" />
+        </columns>
+      </TableView>
     </children>
 </AnchorPane>
-

@@ -84,6 +84,7 @@ public class LoginController implements Initializable {
                 appointmentAlert();
                 currentUserId = result.getInt("User_ID");
                 Main.changeScene("views/menu.fxml");
+                Main.closeScene(LoginButton);
                 System.out.println("Login Success");
             }
         } catch (SQLException | IOException throwables) {

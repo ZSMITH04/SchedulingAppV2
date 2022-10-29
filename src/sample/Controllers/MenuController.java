@@ -129,6 +129,7 @@ public class MenuController implements Initializable {
     public void populateCustomers() {
         try {
             ObservableList<Customers> customers = CustomerQueries.getCustomersObservableList();
+
             colCustomerId.setCellValueFactory(new PropertyValueFactory<>("customerId"));
             colName.setCellValueFactory(new PropertyValueFactory<>("customerName"));
             colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
