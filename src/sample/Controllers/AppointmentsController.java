@@ -27,51 +27,33 @@ import java.util.ResourceBundle;
 public class AppointmentsController implements Initializable {
     @FXML
     private TextField appointmentIdTextfield;
-
     @FXML
     private ComboBox<String> contactCombo;
-
     @FXML
     private ComboBox<Integer> customerIdCombo;
-
     @FXML
     private DatePicker startDatePicker;
     @FXML
     private DatePicker endDatePicker;
-
     @FXML
     private TextField descrTextfield;
-
     @FXML
     private ComboBox<LocalTime> endTimeCombo;
-
     @FXML
     private Button exitButton;
-
     @FXML
     private TextField locTextfield;
-
     @FXML
     private Button saveButton;
-
     @FXML
     private ComboBox<LocalTime> startTimeCombo;
-
     @FXML
     private TextField titleTextfield;
-
     @FXML
     private ComboBox<String> typeCombo;
-
     @FXML
     private ComboBox<Integer> userIdCombo;
     private static Appointments appointmentSelection;
-/*
-    UTC to store time in database, user local time for display, EST for company hours. Local Time checked against EST
-    business hours before being stored in the database.
-     */
-
-
 
     private void saveNew() throws IOException, SQLException {
         if(isAppointmentValid()) {
@@ -96,7 +78,6 @@ public class AppointmentsController implements Initializable {
             }
         }
         }
-
 
     private void saveExisting() throws IOException, SQLException {
         if(checkOverlapping()) {
@@ -139,7 +120,6 @@ public class AppointmentsController implements Initializable {
         endDatePicker.setValue(appointmentSelection.getEndTime().toLocalDateTime().toLocalDate());
         appointmentIdTextfield.setText(String.valueOf(appointmentSelection.getAppointmentId()));
     }
-
 
 
     private boolean checkOverlapping() throws SQLException {
@@ -214,7 +194,6 @@ public class AppointmentsController implements Initializable {
         }
     }
 
-
     @FXML
     private void exit() throws IOException {
         Main.changeScene("views/menu.fxml");
@@ -255,6 +234,7 @@ public class AppointmentsController implements Initializable {
             userIdCombo.setItems(userId);
         }
     }
+
 
     private void fillType(){
         ObservableList<String> typeList = FXCollections.observableArrayList();
@@ -297,12 +277,10 @@ public class AppointmentsController implements Initializable {
         action = input;
     }
 
-
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(!action){
             makeSelections();
-
         }else{
             ObservableList<Integer> appointmentIdList = FXCollections.observableArrayList();
             try {
@@ -311,7 +289,6 @@ public class AppointmentsController implements Initializable {
                 for (Appointments appointment :
                         appointments) {
                     appointmentIdList.add(appointment.getAppointmentId());
-
                 }
             } catch (SQLException e) {
                 e.printStackTrace();
@@ -343,8 +320,8 @@ public class AppointmentsController implements Initializable {
         fillUserID();
         fillType();
         fillTimeCombo();
-        appointmentIdTextfield.setMouseTransparent(true);
-        appointmentIdTextfield.setFocusTraversable(false);
+
+        appointmentIdTextfield.setDisable(true);
 
     }
 }

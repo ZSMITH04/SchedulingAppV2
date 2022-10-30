@@ -53,7 +53,7 @@ public class CountryQueries {
             PreparedStatement ps =JDBC.getPreparedStatement();
             ps.setString(1, country);
             ps.execute();
-            ResultSet rs = JDBC.getPreparedStatement().getResultSet();
+            ResultSet rs = ps.getResultSet();
             int countryId;
             if(rs.next()){
                 countryId = (rs.getInt("Country_ID"));

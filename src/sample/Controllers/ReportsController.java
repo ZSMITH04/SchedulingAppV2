@@ -188,11 +188,10 @@ public class ReportsController implements Initializable {
                 variableComboBox.setVisible(false);
                 hideAppointmentColumns();
                 showTypeColumns();
-                ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentCounts();
+                appointmentsTableView.setItems(AppointmentQueries.getAppointmentCounts());
                 colMonth.setCellValueFactory(new PropertyValueFactory<>("month"));
                 colType2.setCellValueFactory(new PropertyValueFactory<>("type"));
                 colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
-                appointmentsTableView.setItems(appointmentsObservableList);
             }
             if(t1.equals(contactRadio)){
                 variableComboBox.setVisible(true);

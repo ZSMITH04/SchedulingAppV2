@@ -5,11 +5,12 @@
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TitledPane?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="734.0" prefWidth="1143.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MenuController">
+<AnchorPane prefHeight="734.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MenuController">
     <TableView fx:id="AppointmentTableview" layoutX="74.0" layoutY="106.0" prefHeight="288.0" prefWidth="1002.0">
         <columns>
             <TableColumn fx:id="colApptId" prefWidth="111.0" text="Appointment ID" />
@@ -46,8 +47,7 @@
             <Font size="38.0" />
         </font>
     </Label>
-    <Label fx:id="updateLabel" layoutX="74.0" layoutY="703.0" text="Changes" />
-    <Button fx:id="LogOut" layoutX="131.0" layoutY="668.0" mnemonicParsing="false" onAction="#exit" text="Log Out" />
+    <Button fx:id="LogOut" layoutX="131.0" layoutY="681.0" mnemonicParsing="false" onAction="#exit" text="Log Out" />
     <TitledPane animated="false" layoutX="74.0" layoutY="394.0" prefHeight="142.0" prefWidth="268.0" text="Appointment Controls">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="240.0">
             <RadioButton fx:id="monthlyRadio" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" text="View Monthly" />
@@ -65,6 +65,6 @@
             <Button fx:id="CustomerDelete" layoutX="186.0" layoutY="34.0" mnemonicParsing="false" onAction="#confirmDeleteCustomer" text="Delete" />
         </AnchorPane>
     </TitledPane>
-    <Button fx:id="ReportByType" layoutX="74.0" layoutY="668.0" mnemonicParsing="false" onAction="#openTypeReport" text="Reports" />
+    <Button fx:id="ReportByType" layoutX="74.0" layoutY="681.0" mnemonicParsing="false" onAction="#openTypeReport" text="Reports" />
+   <TextArea fx:id="changeText" layoutX="202.0" layoutY="675.0" prefHeight="37.0" prefWidth="213.0" />
 </AnchorPane>
-

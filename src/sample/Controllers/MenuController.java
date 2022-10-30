@@ -88,7 +88,7 @@ public class MenuController implements Initializable {
     @FXML
     private RadioButton viewAllRadio;
     @FXML
-    private Label updateLabel;
+    private TextArea changeText;
 
     /**
      * Convert system to est local date time.
@@ -121,7 +121,6 @@ public class MenuController implements Initializable {
         JDBC.closeConnection();
         System.exit(0);
     }
-
 
     /**
      * Populate customers.
@@ -206,7 +205,7 @@ public class MenuController implements Initializable {
             alert.showAndWait()
                     .filter(response->response == ButtonType.OK)
                     .ifPresent(response-> {AppointmentQueries.deleteAppointment(deletedAppointment.getAppointmentId());
-                        updateLabel.setText("Appointment ID " + deletedAppointment.getAppointmentId() + " successfully deleted.");
+                        changeText.setText("Appointment ID " + deletedAppointment.getAppointmentId() + " successfully deleted.");
                         populateAppointments();
                     });
         } else {
@@ -246,7 +245,7 @@ public class MenuController implements Initializable {
                     .filter(response -> response == ButtonType.OK)
                     .ifPresent(response -> {
                         CustomerQueries.deleteCustomer(deletedCustomer.getCustomerId());
-                        updateLabel.setText(deletedCustomer.getCustomerName() + " successfully deleted.");
+                        changeText.setText(deletedCustomer.getCustomerName() + " successfully deleted.");
                         populateCustomers();
                     });
         }

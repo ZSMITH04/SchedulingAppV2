@@ -21,9 +21,7 @@ public class CustomerQueries {
     private static final Connection conn = JDBC.getConnection();
     public static ObservableList<Customers> getCustomersObservableList() throws SQLException {
         ObservableList<Customers> customersObservableList = FXCollections.observableArrayList();
-
         String query = "SELECT * FROM CUSTOMERS INNER JOIN first_level_divisions fld on customers.Division_ID = fld.Division_ID INNER JOIN countries c on fld.COUNTRY_ID = c.Country_ID ";
-
         try {
             JDBC.makePreparedStatement(query, conn);
             PreparedStatement ps =JDBC.getPreparedStatement();
@@ -100,12 +98,10 @@ public class CustomerQueries {
             ps.setString(7, String.valueOf(LoginController.getCurrentUser()));
             ps.execute();
             return true;
-
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-
     }
 
     /**
@@ -120,7 +116,6 @@ public class CustomerQueries {
      * @return the boolean
      */
     public static boolean modifyCustomer(String customerName, String address, String postalCode, String phone, String division, int customerId){
-
         try{
             String query = "UPDATE customers SET Customer_Name = ?, Address = ?, Postal_Code = ?, Phone = ?, Division_ID = ?, Last_Update = ?, Last_Updated_By = ? WHERE Customer_ID = ?";
             JDBC.makePreparedStatement(query, conn);

@@ -24,27 +24,18 @@ public class LoginController implements Initializable {
 
     @FXML
     private Button ExitButton;
-
     @FXML
     private Label LocationLabel;
-
     @FXML
     private Button LoginButton;
-
     @FXML
     private PasswordField PasswordTextField;
-
     @FXML
     private Text Title;
-
     @FXML
     private TextField UsernameTextField;
-
-
     private static final Connection conn = JDBC.getConnection();
-
     private final ResourceBundle rb = ResourceBundle.getBundle("Translations", Locale.getDefault());
-
     public static int currentUserId;
     /**
      * Creates a new printwriter that makes a new file stream,
@@ -52,11 +43,11 @@ public class LoginController implements Initializable {
      * Appends all login attempts including the username and timestamp of attempt to the log file.
      * @param userName the user name
      * @param success  the success
-     * @throws IOException the io exception
+     * @throws IOException the io    exception
      */
     public static void logActivity(String userName, String success) throws IOException {
         PrintWriter pw = new PrintWriter(new FileOutputStream(("login_activity.txt"),true));
-        pw.append("Username: ").append(userName).append(" attempted to login on ").append(String.valueOf(LocalDateTime.now())).append(TimeZone.getTimeZone(ZoneId.systemDefault()).toString()).append("Result: ").append(success).append("\n");
+        pw.append("Username: ").append(userName).append(" attempted to login on ").append(String.valueOf(LocalDateTime.now())).append(String.valueOf(ZoneId.systemDefault())).append(" ").append("Result: ").append(success).append("\n");
         pw.close();
     }
 
@@ -66,12 +57,13 @@ public class LoginController implements Initializable {
      * If successful, logs the successful attempt and continues into the main application. Alerts for appointments in the next 15 minutes.
      */
     public void loginToApplication(){
-
         try{
             String resultOf = "";
             String userID = UsernameTextField.getText().trim();
             String password = PasswordTextField.getText().trim();
-            PreparedStatement ps = conn.prepareStatement("SELECT * FROM USERS WHERE User_Name = ?");
+            String query = "SELECT * FROM USERS WHERE User_Name = ?";
+            JDBC.makePreparedStatement(query,conn);
+            PreparedStatement ps = JDBC.getPreparedStatement();
             ps.setString(1, userID);
             ResultSet result = ps.executeQuery();
             if(!result.next() || !result.getString("Password").equals(password)){

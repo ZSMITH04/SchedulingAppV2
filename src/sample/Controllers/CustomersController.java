@@ -8,10 +8,12 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import sample.Database.AppointmentQueries;
 import sample.Database.CountryQueries;
 import sample.Database.CustomerQueries;
 import sample.Database.DivisionQueries;
 import sample.Main;
+import sample.Models.Appointments;
 import sample.Models.Countries;
 import sample.Models.Customers;
 import sample.Models.FirstLevelDivisions;
@@ -19,6 +21,7 @@ import sample.Models.FirstLevelDivisions;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
+import java.util.Collections;
 import java.util.ResourceBundle;
 
 public class CustomersController implements Initializable {
@@ -57,7 +60,6 @@ public class CustomersController implements Initializable {
     }
     @FXML
     private void saveNew() throws IOException {
-
         if(selectionsFilled()) {
             boolean addCustomer = CustomerQueries.insertCustomer(
                     customerNameTextfield.getText(),
@@ -162,7 +164,19 @@ public class CustomersController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(!action){
             makeSelections();
-        }
+        }else{ObservableList<Integer> customerIdList = FXCollections.observableArrayList();
+            try {
+                ObservableList<Customers> customers = CustomerQueries.getCustomersObservableList();
+                for (Customers customer :
+                        customers) {
+                    customerIdList.add(customer.getCustomerId());
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            int customerId = Collections.max(customerIdList)+1;
+            customerIdTextfield.setText(String.valueOf(customerId));}
+
         saveButton.setOnAction(e->{
             if(!action){
                 try{
@@ -184,8 +198,6 @@ public class CustomersController implements Initializable {
             e.printStackTrace();
         }
         fillDivision();
-        customerIdTextfield.setMouseTransparent(true);
-        customerIdTextfield.setFocusTraversable(false);
         customerIdTextfield.setDisable(true);
     }
 }
