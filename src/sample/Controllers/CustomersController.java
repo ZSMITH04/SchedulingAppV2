@@ -102,11 +102,7 @@ public class CustomersController implements Initializable {
     }
 
     private boolean selectionsFilled(){
-        return customerNameTextfield.getText() != null
-                && customerAddressTextfield.getText() != null
-                && customerPhoneTextfield.getText() != null
-                && customerZipcodeTextfield.getText() != null
-                && customerCountryCombo.getSelectionModel().getSelectedItem() != null;
+        return !customerZipcodeTextfield.getText().isEmpty() && !customerNameTextfield.getText().isEmpty() && !customerAddressTextfield.getText().isEmpty() && !customerPhoneTextfield.getText().isEmpty() && !DivisionCombo.getSelectionModel().getSelectedItem().isEmpty();
     }
     private void fillCountry() throws SQLException {
         ObservableList<Countries> countries = CountryQueries.getCountriesObservableList();

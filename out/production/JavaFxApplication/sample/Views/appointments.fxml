@@ -20,7 +20,7 @@
     <Label layoutX="138.0" layoutY="358.0" text="Start Date" />
     <Label layoutX="137.0" layoutY="391.0" text="Start Time" />
     <Label layoutX="137.0" layoutY="424.0" text="End Time" />
-    <Label layoutX="137.0" layoutY="31.0" text="Add Appointment">
+    <Label layoutX="70.0" layoutY="28.0" text="Add/Modify Appointments">
         <font>
             <Font size="41.0" />
         </font>
@@ -41,4 +41,3 @@
     <DatePicker fx:id="endDatePicker" layoutX="230.0" layoutY="453.0" prefHeight="25.0" prefWidth="207.0" />
     <Label layoutX="138.0" layoutY="457.0" text="End Date" />
 </AnchorPane>
-

@@ -74,8 +74,8 @@ public class AppointmentsController implements Initializable {
 
 
     private void saveNew() throws IOException, SQLException {
-        if(checkOverlappingNew()) {
-            if (isAppointmentValid() && checkTimeSelection() && checkEST()) {
+        if(isAppointmentValid()) {
+            if (checkOverlappingNew() && checkTimeSelection() && checkEST()) {
                 boolean addAppointment = AppointmentQueries.insertAppointment(
                         titleTextfield.getText(),
                         descrTextfield.getText(),

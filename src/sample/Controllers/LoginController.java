@@ -47,7 +47,8 @@ public class LoginController implements Initializable {
 
     public static int currentUserId;
     /**
-     * Creates a new printwriter that makes a new file stream, creating login_activity.txt if it doesn't exist, or appending to existing if it does.
+     * Creates a new printwriter that makes a new file stream,
+     * creating login_activity.txt if it doesn't exist, or appending to existing if it does.
      * Appends all login attempts including the username and timestamp of attempt to the log file.
      * @param userName the user name
      * @param success  the success
