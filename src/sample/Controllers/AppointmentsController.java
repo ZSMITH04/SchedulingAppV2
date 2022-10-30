@@ -211,6 +211,7 @@ public class AppointmentsController implements Initializable {
 
     /**
      * Fill customer id.
+     *
      */
     private void fillCustomerId() throws SQLException {
         ObservableList<Integer> customerId = FXCollections.observableArrayList();
@@ -277,6 +278,14 @@ public class AppointmentsController implements Initializable {
         action = input;
     }
 
+    /**
+     * checks for the action that opened the appointments page
+     * makes selections and sets the action of the save button accordingly based on that
+     * fills all combo boxes
+     * disables appointment ID textfield
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         if(!action){

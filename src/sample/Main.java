@@ -10,8 +10,11 @@ import javafx.stage.Stage;
 import sample.Controllers.JDBC;
 
 import java.io.IOException;
+import java.time.ZoneId;
+import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
+import java.util.TimeZone;
 
 
 public class Main extends Application {
@@ -46,5 +49,7 @@ public class Main extends Application {
     public static void main(String[] args) {
         JDBC.makeConnection();
         launch(args);
+        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
+
     }
 }

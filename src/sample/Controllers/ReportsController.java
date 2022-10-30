@@ -69,6 +69,8 @@ public class ReportsController implements Initializable {
     private TableColumn<?, ?> colType;
     @FXML
     private TableColumn<?,?> colType2;
+    @FXML
+    private TableColumn<?,?> colYear;
 
 
 
@@ -134,11 +136,13 @@ public class ReportsController implements Initializable {
         colMonth.setVisible(false);
         colType2.setVisible(false);
         colTotal.setVisible(false);
+        colYear.setVisible(false);
     }
     private void showTypeColumns(){
         colMonth.setVisible(true);
         colType2.setVisible(true);
         colTotal.setVisible(true);
+        colYear.setVisible(true);
     }
     private void showAppointmentColumns(){
         colApptId.setVisible(true);
@@ -192,6 +196,7 @@ public class ReportsController implements Initializable {
                 colMonth.setCellValueFactory(new PropertyValueFactory<>("month"));
                 colType2.setCellValueFactory(new PropertyValueFactory<>("type"));
                 colTotal.setCellValueFactory(new PropertyValueFactory<>("total"));
+                colYear.setCellValueFactory(new PropertyValueFactory<>("year"));
             }
             if(t1.equals(contactRadio)){
                 variableComboBox.setVisible(true);

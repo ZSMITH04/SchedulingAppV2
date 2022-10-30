@@ -229,7 +229,7 @@ public class MenuController implements Initializable {
     /**
      * Confirm delete customer. Confirms that a customer is selected.
      * If so, customer is asked to confirm the delete. Response is filtered for an ok press.
-     * If ok is pressed, the selected customer is deleted.
+     * If present, the selected customer is deleted and the table is repopulated.
      */
     @FXML
     public void confirmDeleteCustomer() throws SQLException {
@@ -334,6 +334,7 @@ public class MenuController implements Initializable {
         }));
         populateAppointments();
         populateCustomers();
+        changeText.setEditable(false);
     }
 
 }

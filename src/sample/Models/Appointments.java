@@ -37,8 +37,9 @@ public class Appointments {
     this.customerId=customer_id;
     }
 
-    public Appointments(String month, String type, int count) {
+    public Appointments(String month, int year, String type, int count) {
         this.month=month;
+        this.year=year;
         this.type=type;
         this.total=count;
     }
@@ -232,5 +233,23 @@ public class Appointments {
     private Timestamp lastUpdate;
     private String lastUpdatedBy;
     private String customerName;
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
+    private int year;
 
 }

@@ -39,6 +39,7 @@
             <TableColumn fx:id="colEnd" prefWidth="75.0" text="End" />
             <TableColumn fx:id="colCustomerId" prefWidth="75.0" text="Customer ID" />
             <TableColumn fx:id="colMonth" prefWidth="75.0" text="Month" />
+            <TableColumn fx:id="colYear" prefWidth="100.0" text="Year" />
             <TableColumn fx:id="colType2" prefWidth="50.0" text="Type" />
             <TableColumn fx:id="colTotal" prefWidth="100.0" text="Total" />
         </columns>

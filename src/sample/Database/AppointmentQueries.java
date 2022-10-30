@@ -219,7 +219,7 @@ public class AppointmentQueries {
      */
     public static ObservableList<Appointments> getAppointmentCounts(){
         ObservableList<Appointments> appointmentsObservableList = FXCollections.observableArrayList();
-        String query = "SELECT TYPE, MONTHNAME(Start) as MONTH, COUNT(*) as 'COUNT' FROM appointments GROUP BY MONTH(Start) and YEAR(START), type";
+        String query = "SELECT TYPE, MONTHNAME(START) as MONTH, year(Start) as YEAR, COUNT(*) as 'COUNT' FROM appointments GROUP BY MONTH(Start) and YEAR(START), type";
         try {
             JDBC.makePreparedStatement(query,conn);
             PreparedStatement ps = JDBC.getPreparedStatement();
@@ -228,7 +228,9 @@ public class AppointmentQueries {
             Appointments appointment;
             while (rs.next()) {
                 appointment = new Appointments(
+
                         rs.getString("Month"),
+                        rs.getInt("Year"),
                         rs.getString("Type"),
                         rs.getInt("COUNT"));
                 appointmentsObservableList.add(appointment);
