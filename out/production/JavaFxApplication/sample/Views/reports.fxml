@@ -12,18 +12,30 @@
 
 <AnchorPane prefHeight="680.0" prefWidth="847.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.ReportsController">
     <children>
-        <Button fx:id="exitButton" layoutX="795.0" layoutY="630.0" mnemonicParsing="false" text="Exit" />
-        <Label layoutX="373.0" layoutY="8.0" text="Reports">
+        <Button fx:id="exitButton" layoutX="718.0" layoutY="630.0" mnemonicParsing="false" text="Exit">
+         <font>
+            <Font name="Rockwell Bold" size="13.0" />
+         </font></Button>
+        <Label layoutX="344.0" layoutY="12.0" text="Reports">
             <font>
-                <Font size="29.0" />
+                <Font name="Rockwell Bold" size="38.0" />
             </font></Label>
-        <TitledPane animated="false" layoutX="15.0" layoutY="551.0" prefHeight="104.0" prefWidth="303.0" text="Report Options">
+        <TitledPane animated="false" layoutX="83.0" layoutY="551.0" prefHeight="104.0" prefWidth="303.0" text="Report Options">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="78.0" prefWidth="288.0">
                     <children>
-                        <RadioButton fx:id="typeRadio" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="By Type" />
-                        <RadioButton fx:id="customerRadio" layoutX="191.0" layoutY="10.0" mnemonicParsing="false" text="By Customer" />
-                        <RadioButton fx:id="contactRadio" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" text="By Contact" />
+                        <RadioButton fx:id="typeRadio" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" text="By Type">
+                     <font>
+                        <Font name="Rockwell Bold" size="12.0" />
+                     </font></RadioButton>
+                        <RadioButton fx:id="customerRadio" layoutX="191.0" layoutY="10.0" mnemonicParsing="false" text="By Customer">
+                     <font>
+                        <Font name="Rockwell Bold" size="12.0" />
+                     </font></RadioButton>
+                        <RadioButton fx:id="contactRadio" layoutX="97.0" layoutY="10.0" mnemonicParsing="false" text="By Contact">
+                     <font>
+                        <Font name="Rockwell Bold" size="12.0" />
+                     </font></RadioButton>
                         <ComboBox fx:id="variableComboBox" layoutX="76.0" layoutY="39.0" prefWidth="150.0" />
                     </children>
                 </AnchorPane>

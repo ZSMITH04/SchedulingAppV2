@@ -1,6 +1,6 @@
 package sample.Controllers;
 
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
 import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.value.ObservableValue;

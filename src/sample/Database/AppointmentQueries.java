@@ -1,6 +1,6 @@
 package sample.Database;
 
-import com.mysql.cj.x.protobuf.MysqlxPrepare;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.Alert;
