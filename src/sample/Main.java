@@ -49,7 +49,5 @@ public class Main extends Application {
     public static void main(String[] args) {
         JDBC.makeConnection();
         launch(args);
-        TimeZone.setDefault(TimeZone.getTimeZone("UTC"));
-
     }
 }
