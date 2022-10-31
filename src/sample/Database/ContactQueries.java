@@ -11,6 +11,12 @@ import java.util.Objects;
 public class ContactQueries {
 
     private static final Connection conn = JDBC.getConnection();
+
+    /**
+     * Gets contacts observable list.
+     *
+     * @return the contacts observable list
+     */
     public static ObservableList<Contacts> getContactsObservableList() {
         ObservableList<Contacts> contactsObservableList = FXCollections.observableArrayList();
         String ps = "SELECT * FROM contacts";

@@ -26,6 +26,9 @@ import java.net.URL;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
 
+/**
+ * The type Reports controller.
+ */
 public class ReportsController implements Initializable {
 
     @FXML

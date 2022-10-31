@@ -7,8 +7,12 @@ import sample.Models.FirstLevelDivisions;
 
 import java.sql.*;
 
+/**
+ * The type Division queries.
+ */
 public class DivisionQueries {
     private static final Connection conn = JDBC.getConnection();
+
     /**
      * Get divisions observable list observable list.
      *

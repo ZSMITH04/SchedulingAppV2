@@ -84,6 +84,11 @@ public class LoginController implements Initializable {
             throwables.printStackTrace();
         }
     }
+
+    /**
+     * used to actively check current user throughout the program
+     * @return currentUserId
+     */
     public static Integer getCurrentUser(){
         return currentUserId;
     }
@@ -94,6 +99,10 @@ public class LoginController implements Initializable {
         System.exit(0);
     }
 
+    /**
+     * Alert the user if an appointment is coming up in the next 15 minutes
+     * @throws SQLException
+     */
     private void appointmentAlert() throws SQLException {
         ObservableList<Appointments> appointments = AppointmentQueries.getAppointmentsObservableList();
         Appointments upcomingAppts = null;
@@ -108,6 +117,12 @@ public class LoginController implements Initializable {
         }else{Main.createAlert(Alert.AlertType.INFORMATION, rb.getString("noUpcomingAppointments"));}
 
     }
+
+    /**
+     * Sets the prompt text of all the fields and labels,
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
         // Locale.setDefault(new Locale("fr"));

@@ -10,7 +10,9 @@ import java.sql.*;
 import java.time.LocalDateTime;
 
 
-
+/**
+ * The type Customer queries.
+ */
 public class CustomerQueries {
     /**
      * Gets customers observable list.
@@ -19,6 +21,13 @@ public class CustomerQueries {
      */
 
     private static final Connection conn = JDBC.getConnection();
+
+    /**
+     * Gets customers observable list.
+     *
+     * @return the customers observable list
+     * @throws SQLException the sql exception
+     */
     public static ObservableList<Customers> getCustomersObservableList() throws SQLException {
         ObservableList<Customers> customersObservableList = FXCollections.observableArrayList();
         String query = "SELECT * FROM CUSTOMERS INNER JOIN first_level_divisions fld on customers.Division_ID = fld.Division_ID INNER JOIN countries c on fld.COUNTRY_ID = c.Country_ID ";

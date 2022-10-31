@@ -143,6 +143,10 @@ public class MenuController implements Initializable {
         }
     }
 
+    /**
+     * general use function to set the cellvaluefactory of each column in appointment tableview
+     * @param appointments
+     */
     public void setAppointmentValueFactories(ObservableList<Appointments> appointments){
         colApptId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
         colTitle.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -157,7 +161,7 @@ public class MenuController implements Initializable {
         AppointmentTableview.setItems(appointments);
     }
     /**
-     * Populate appointments.
+     * Populate all appointments
      */
     public void populateAppointments() {
         try {
@@ -285,6 +289,11 @@ public class MenuController implements Initializable {
         Main.changeScene("views/Appointments.fxml");
         Main.closeScene(AppointmentAdd);
     }
+
+    /**
+     * Opens the Appointment view, sets the action boolean to false, and passes the selected appointment to the Appointment controller
+     * @throws IOException
+     */
     @FXML
     private void modifyAppointment() throws IOException {
         if(AppointmentTableview.getSelectionModel().getSelectedItem() != null) {
@@ -296,6 +305,12 @@ public class MenuController implements Initializable {
             Main.createAlert(Alert.AlertType.ERROR, "You must have an appointment selected to modify.");
         }
     }
+
+    /**
+     * Opens the customer view, sets the action boolean to false
+     * passes the selected appointment to the appointment controller
+     * @throws IOException
+     */
     @FXML
     private void modifyCustomer() throws IOException {
         if(CustomerTableview.getSelectionModel().getSelectedItem() != null) {
@@ -314,6 +329,14 @@ public class MenuController implements Initializable {
         Main.closeScene(ReportByType);
     }
 
+    /**
+     * Sets a toggle group for calendar view toggles, and adds a listener to that toggle group to determine
+     * what view should be displayed actively.
+     * populates appointments & customers
+     * sets the changeText TextArea to non-editable
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
         ToggleGroup appointmentToggle = new ToggleGroup();

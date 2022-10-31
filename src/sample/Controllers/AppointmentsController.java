@@ -55,6 +55,13 @@ public class AppointmentsController implements Initializable {
     private ComboBox<Integer> userIdCombo;
     private static Appointments appointmentSelection;
 
+    /**
+     * Saves a new appointment if all checks are true
+     * if checks are not true, various alerts will inform the user what the issue is
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
     private void saveNew() throws IOException, SQLException {
         if(isAppointmentValid()) {
             if (checkOverlappingNew() && checkTimeSelection() && checkEST()) {
@@ -78,7 +85,13 @@ public class AppointmentsController implements Initializable {
             }
         }
         }
-
+    /**
+     * Saves an existing appointment if all checks are true
+     * if checks are not true, various alerts will inform the user what the issue is
+     *
+     * @throws IOException
+     * @throws SQLException
+     */
     private void saveExisting() throws IOException, SQLException {
         if(checkOverlapping()) {
             if (isAppointmentValid() && checkTimeSelection() && checkEST()) {
@@ -102,10 +115,18 @@ public class AppointmentsController implements Initializable {
             }
         }
     }
+
+    /**
+     * Receives the selection from Appointments tableview in Menu
+     * @param appointment
+     */
     public static void receiveSelection(Appointments appointment){
         appointmentSelection = appointment;
     }
 
+    /**
+     * Makes selections on all fields based on the appointment selection passed by receive selection
+     */
     public void makeSelections(){
         titleTextfield.setText(appointmentSelection.getTitle());
         descrTextfield.setText(appointmentSelection.getDescription());
@@ -121,7 +142,13 @@ public class AppointmentsController implements Initializable {
         appointmentIdTextfield.setText(String.valueOf(appointmentSelection.getAppointmentId()));
     }
 
-
+    /**
+     * Creates an observable list of all appointments
+     * Creates an appointment object with the start and end datetime of the users input
+     * References that appointment against each appointment in the list and returns false if it overlaps any existing appointments
+     * @return
+     * @throws SQLException
+     */
     private boolean checkOverlapping() throws SQLException {
         ObservableList<Appointments> appointmentList = AppointmentQueries.getAppointmentsObservableList();
         Appointments newAppointment = new Appointments(appointmentSelection.getAppointmentId(), Timestamp.valueOf(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem())), Timestamp.valueOf(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem())));
@@ -136,6 +163,13 @@ public class AppointmentsController implements Initializable {
         return true;
     }
 
+    /**
+     * Creates an observable list of all appointments
+     * Creates an appointment object with the start and end datetime of the users input
+     * References that appointment against each appointment in the list and returns false if it overlaps any existing appointments
+     * @return
+     * @throws SQLException
+     */
     private boolean checkOverlappingNew() throws SQLException{
         ObservableList<Appointments> appointments= AppointmentQueries.getAppointmentsObservableList();
         Appointments newAppointment = new Appointments(Integer.parseInt(appointmentIdTextfield.getText()), Timestamp.valueOf(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem())), Timestamp.valueOf(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem())));
@@ -152,6 +186,10 @@ public class AppointmentsController implements Initializable {
         return true;
     }
 
+    /**
+     * Checks if users input, converted to EST, is between the business hours.
+     * @return true if pass
+     */
     private boolean checkEST(){
         LocalDateTime ESTStart = MenuController.convertSystemToEST(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem()));
         LocalDateTime ESTEnd = MenuController.convertSystemToEST(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem()));
@@ -165,6 +203,10 @@ public class AppointmentsController implements Initializable {
         }
     }
 
+    /**
+     * If any of the data points are empty, alert the user.
+     * @return true if all are filled
+     */
     private boolean isAppointmentValid(){
         if(contactCombo.getSelectionModel().isEmpty() ||
                 titleTextfield.getText().isEmpty() ||
@@ -183,6 +225,10 @@ public class AppointmentsController implements Initializable {
         return false;
     }
 
+    /**
+     *Check the users time selection against itself to make sure the appointment end is after the appointment start.
+     * @return
+     */
     private boolean checkTimeSelection(){
         Timestamp start = Timestamp.valueOf(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem()));
         Timestamp end = Timestamp.valueOf(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem()));
@@ -194,12 +240,20 @@ public class AppointmentsController implements Initializable {
         }
     }
 
+    /**
+     * changes the scene back to main and closes the current window
+     * @throws IOException
+     */
     @FXML
     private void exit() throws IOException {
         Main.changeScene("views/menu.fxml");
         Main.closeScene(exitButton);
     }
 
+    /**
+     * fills a list with contact names for each contact in the database
+     *fills the contact combo with the list of contact names
+     */
     private void fillContacts(){
         ObservableList<String> contactNames = FXCollections.observableArrayList();
         ObservableList<Contacts> contacts = ContactQueries.getContactsObservableList();
@@ -210,8 +264,8 @@ public class AppointmentsController implements Initializable {
     }
 
     /**
-     * Fill customer id.
-     *
+     * fills a list with customer IDS for each customer in the database
+     *fills the customer combo with the list of customer IDS
      */
     private void fillCustomerId() throws SQLException {
         ObservableList<Integer> customerId = FXCollections.observableArrayList();
@@ -224,7 +278,8 @@ public class AppointmentsController implements Initializable {
     }
 
     /**
-     * Fill user id.
+     * fills a list with user IDS for each user in the database
+     * fills the user combo with the list of user IDS
      */
     private void fillUserID(){
         ObservableList<Integer> userId = FXCollections.observableArrayList();
@@ -236,7 +291,10 @@ public class AppointmentsController implements Initializable {
         }
     }
 
-
+    /**
+     * fills a list with 4 type names
+     * sets the type combo with name list
+     */
     private void fillType(){
         ObservableList<String> typeList = FXCollections.observableArrayList();
         typeList.addAll("New Inquiry", "Follow-Up", "Procedure", "Consultation");

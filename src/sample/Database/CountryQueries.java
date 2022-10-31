@@ -7,8 +7,12 @@ import sample.Models.Countries;
 
 import java.sql.*;
 
+/**
+ * The type Country queries.
+ */
 public class CountryQueries {
     private static final Connection conn = JDBC.getConnection();
+
     /**
      * Get countries observable list observable list.
      *
