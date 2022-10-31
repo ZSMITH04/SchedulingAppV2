@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="734.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MenuController">
+<AnchorPane prefHeight="723.0" prefWidth="1130.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.MenuController">
     <TableView fx:id="AppointmentTableview" layoutX="74.0" layoutY="106.0" prefHeight="288.0" prefWidth="1002.0">
         <columns>
             <TableColumn fx:id="colApptId" prefWidth="111.0" text="Appointment ID" />
@@ -25,46 +25,85 @@
             <TableColumn fx:id="colContact" prefWidth="79.0" text="Contact" />
         </columns>
     </TableView>
-    <TableView fx:id="CustomerTableview" layoutX="428.0" layoutY="459.0" prefHeight="234.0" prefWidth="636.0">
+    <TableView fx:id="CustomerTableview" layoutX="428.0" layoutY="453.0" prefHeight="260.0" prefWidth="646.0">
         <columns>
-            <TableColumn fx:id="colCustomerId" prefWidth="101.0" text="Customer ID" />
-            <TableColumn fx:id="colName" prefWidth="57.0" text="Name" />
-            <TableColumn fx:id="colAddress" prefWidth="67.0" text="Address" />
-            <TableColumn fx:id="colPostcode" prefWidth="84.0" text="Postal Code" />
-            <TableColumn fx:id="colPhone" prefWidth="102.0" text="Phone Number" />
-            <TableColumn fx:id="colCountry" prefWidth="65.0" text="Country" />
-            <TableColumn fx:id="colDivision" prefWidth="83.0" text="Division" />
-            <TableColumn fx:id="colDivisionId" prefWidth="75.0" text="Division ID" />
+            <TableColumn fx:id="colCustomerId" prefWidth="77.0" text="Customer ID" />
+            <TableColumn fx:id="colName" prefWidth="89.0" text="Name" />
+            <TableColumn fx:id="colAddress" prefWidth="81.0" text="Address" />
+            <TableColumn fx:id="colPostcode" prefWidth="77.0" text="Postal Code" />
+            <TableColumn fx:id="colPhone" prefWidth="98.0" text="Phone Number" />
+            <TableColumn fx:id="colCountry" prefWidth="82.0" text="Country" />
+            <TableColumn fx:id="colDivision" prefWidth="61.0" text="Division" />
+            <TableColumn fx:id="colDivisionId" text="Division ID" />
         </columns>
     </TableView>
     <Label layoutX="74.0" layoutY="43.0" text="Appointments">
         <font>
-            <Font size="38.0" />
+            <Font name="Rockwell Bold" size="41.0" />
         </font>
     </Label>
     <Label layoutX="428.0" layoutY="404.0" text="Customers">
         <font>
-            <Font size="38.0" />
+            <Font name="Rockwell Bold" size="41.0" />
         </font>
     </Label>
-    <Button fx:id="LogOut" layoutX="131.0" layoutY="681.0" mnemonicParsing="false" onAction="#exit" text="Log Out" />
+    <Button fx:id="LogOut" layoutX="131.0" layoutY="681.0" mnemonicParsing="false" onAction="#exit" text="Log Out">
+      <font>
+         <Font name="Rockwell" size="12.0" />
+      </font></Button>
     <TitledPane animated="false" layoutX="74.0" layoutY="394.0" prefHeight="142.0" prefWidth="268.0" text="Appointment Controls">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="116.0" prefWidth="240.0">
-            <RadioButton fx:id="monthlyRadio" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" text="View Monthly" />
-            <RadioButton fx:id="weeklyRadio" layoutX="24.0" layoutY="46.0" mnemonicParsing="false" text="View Weekly" />
-            <RadioButton fx:id="viewAllRadio" layoutX="24.0" layoutY="73.0" mnemonicParsing="false" text="View All" />
-            <Button fx:id="AppointmentAdd" layoutX="188.0" layoutY="9.0" mnemonicParsing="false" onAction="#addAppointment" text="Add" />
-            <Button fx:id="AppointmentModify" layoutX="181.0" layoutY="34.0" mnemonicParsing="false" onAction="#modifyAppointment" text="Modify" />
-            <Button fx:id="AppointmentDelete" layoutX="182.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeleteAppointment" text="Delete" />
+            <RadioButton fx:id="monthlyRadio" layoutX="24.0" layoutY="16.0" mnemonicParsing="false" text="View Monthly">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></RadioButton>
+            <RadioButton fx:id="weeklyRadio" layoutX="24.0" layoutY="46.0" mnemonicParsing="false" text="View Weekly">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></RadioButton>
+            <RadioButton fx:id="viewAllRadio" layoutX="24.0" layoutY="73.0" mnemonicParsing="false" text="View All">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></RadioButton>
+            <Button fx:id="AppointmentAdd" layoutX="188.0" layoutY="9.0" mnemonicParsing="false" onAction="#addAppointment" text="Add">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
+            <Button fx:id="AppointmentModify" layoutX="181.0" layoutY="34.0" mnemonicParsing="false" onAction="#modifyAppointment" text="Modify">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
+            <Button fx:id="AppointmentDelete" layoutX="182.0" layoutY="61.0" mnemonicParsing="false" onAction="#confirmDeleteAppointment" text="Delete">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
         </AnchorPane>
+      <font>
+         <Font name="Rockwell Bold" size="13.0" />
+      </font>
     </TitledPane>
     <TitledPane animated="false" layoutX="74.0" layoutY="550.0" prefHeight="118.0" prefWidth="268.0" text="Customer Controls">
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-            <Button fx:id="CustomerAdd" layoutX="37.0" layoutY="34.0" mnemonicParsing="false" onAction="#addCustomer" text="Add" />
-            <Button fx:id="CustomerModify" layoutX="106.0" layoutY="34.0" mnemonicParsing="false" onAction="#modifyCustomer" text="Modify" />
-            <Button fx:id="CustomerDelete" layoutX="186.0" layoutY="34.0" mnemonicParsing="false" onAction="#confirmDeleteCustomer" text="Delete" />
+            <Button fx:id="CustomerAdd" layoutX="37.0" layoutY="34.0" mnemonicParsing="false" onAction="#addCustomer" text="Add">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
+            <Button fx:id="CustomerModify" layoutX="106.0" layoutY="34.0" mnemonicParsing="false" onAction="#modifyCustomer" text="Modify">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
+            <Button fx:id="CustomerDelete" layoutX="186.0" layoutY="34.0" mnemonicParsing="false" onAction="#confirmDeleteCustomer" text="Delete">
+            <font>
+               <Font name="Rockwell" size="12.0" />
+            </font></Button>
         </AnchorPane>
+      <font>
+         <Font name="Rockwell Bold" size="13.0" />
+      </font>
     </TitledPane>
-    <Button fx:id="ReportByType" layoutX="74.0" layoutY="681.0" mnemonicParsing="false" onAction="#openTypeReport" text="Reports" />
+    <Button fx:id="ReportByType" layoutX="74.0" layoutY="681.0" mnemonicParsing="false" onAction="#openTypeReport" text="Reports">
+      <font>
+         <Font name="Rockwell" size="12.0" />
+      </font></Button>
    <TextArea fx:id="changeText" layoutX="202.0" layoutY="675.0" prefHeight="37.0" prefWidth="213.0" />
 </AnchorPane>

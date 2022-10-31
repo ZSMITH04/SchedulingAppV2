@@ -9,14 +9,29 @@
 <?import javafx.scene.text.Text?>
 
 <AnchorPane prefHeight="398.0" prefWidth="484.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controllers.LoginController">
-    <PasswordField fx:id="PasswordTextField" layoutX="134.0" layoutY="217.0" prefHeight="25.0" prefWidth="217.0" promptText="Password" />
-    <TextField fx:id="UsernameTextField" layoutX="134.0" layoutY="185.0" prefHeight="25.0" prefWidth="217.0" promptText="Username" />
-    <Text fx:id="Title" layoutX="118.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Appointment Manager" textAlignment="CENTER" wrappingWidth="249.0">
+    <PasswordField fx:id="PasswordTextField" layoutX="134.0" layoutY="217.0" prefHeight="25.0" prefWidth="217.0" promptText="Password">
+      <font>
+         <Font name="Rockwell" size="14.0" />
+      </font></PasswordField>
+    <TextField fx:id="UsernameTextField" layoutX="134.0" layoutY="185.0" prefHeight="25.0" prefWidth="217.0" promptText="Username">
+      <font>
+         <Font name="Rockwell" size="14.0" />
+      </font></TextField>
+    <Text fx:id="Title" layoutX="118.0" layoutY="83.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Customer Appointment Manager" textAlignment="CENTER" wrappingWidth="249.0">
         <font>
-            <Font size="22.0" />
+            <Font name="Rockwell Bold" size="30.0" />
         </font>
     </Text>
-    <Button fx:id="LoginButton" layoutX="220.0" layoutY="249.0" mnemonicParsing="false" onAction="#loginToApplication" text="Login" />
-    <Button fx:id="ExitButton" layoutX="305.0" layoutY="249.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="46.0" text="Exit" />
-    <Label fx:id="LocationLabel" layoutX="142.0" layoutY="305.0" text="Location" />
+    <Button fx:id="LoginButton" layoutX="229.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginToApplication" text="Login">
+      <font>
+         <Font name="Rockwell Bold" size="13.0" />
+      </font></Button>
+    <Button fx:id="ExitButton" layoutX="305.0" layoutY="285.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="46.0" text="Exit">
+      <font>
+         <Font name="Rockwell" size="13.0" />
+      </font></Button>
+    <Label fx:id="LocationLabel" layoutX="141.0" layoutY="289.0" text="Location">
+      <font>
+         <Font name="Rockwell" size="13.0" />
+      </font></Label>
 </AnchorPane>
