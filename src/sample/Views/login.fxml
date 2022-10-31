@@ -22,16 +22,16 @@
             <Font name="Rockwell Bold" size="30.0" />
         </font>
     </Text>
-    <Button fx:id="LoginButton" layoutX="229.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginToApplication" text="Login">
+    <Button fx:id="LoginButton" layoutX="149.0" layoutY="285.0" mnemonicParsing="false" onAction="#loginToApplication" text="Login">
       <font>
          <Font name="Rockwell Bold" size="13.0" />
       </font></Button>
-    <Button fx:id="ExitButton" layoutX="305.0" layoutY="285.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="46.0" text="Exit">
+    <Button fx:id="ExitButton" layoutX="285.0" layoutY="285.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="46.0" text="Exit">
       <font>
-         <Font name="Rockwell" size="13.0" />
+         <Font name="Rockwell Bold" size="13.0" />
       </font></Button>
-    <Label fx:id="LocationLabel" layoutX="141.0" layoutY="289.0" text="Location">
+    <Label fx:id="LocationLabel" layoutX="204.0" layoutY="254.0" text="Location">
       <font>
-         <Font name="Rockwell" size="13.0" />
+         <Font name="Rockwell Italic" size="12.0" />
       </font></Label>
 </AnchorPane>
