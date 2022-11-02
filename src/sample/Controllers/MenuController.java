@@ -89,7 +89,7 @@ public class MenuController implements Initializable {
     private RadioButton viewAllRadio;
     @FXML
     private TextArea changeText;
-
+    private ObservableList<Appointments> appointments;
     /**
      * Convert system to est local date time.
      *
@@ -165,7 +165,7 @@ public class MenuController implements Initializable {
      */
     public void populateAppointments() {
         try {
-            ObservableList<Appointments> appointments = AppointmentQueries.getAppointmentsObservableList();
+            appointments = AppointmentQueries.getAppointmentsObservableList();
             setAppointmentValueFactories(appointments);
         } catch (Exception e) {
             e.printStackTrace();
@@ -177,7 +177,7 @@ public class MenuController implements Initializable {
      */
     public void populateWeeklyAppointments() {
         try {
-            ObservableList<Appointments> appointments = AppointmentQueries.getAppointmentsObservableListByWeek();
+            appointments = AppointmentQueries.getAppointmentsObservableListByWeek();
             setAppointmentValueFactories(appointments);
         } catch (Exception e) {
             e.printStackTrace();
@@ -189,7 +189,7 @@ public class MenuController implements Initializable {
      */
     public void populateMonthlyAppointments() {
         try {
-            ObservableList<Appointments> appointments = AppointmentQueries.getAppointmentsObservableListByMonth();
+            appointments = AppointmentQueries.getAppointmentsObservableListByMonth();
             setAppointmentValueFactories(appointments);
         } catch (Exception e) {
             e.printStackTrace();
@@ -286,7 +286,7 @@ public class MenuController implements Initializable {
     @FXML
     private void addAppointment()throws IOException {
         AppointmentsController.setAction(true);
-        Main.changeScene("views/Appointments.fxml");
+        Main.changeScene("views/appointments.fxml");
         Main.closeScene(AppointmentAdd);
     }
 

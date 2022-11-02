@@ -172,17 +172,15 @@ public class AppointmentsController implements Initializable {
      */
     private boolean checkOverlappingNew() throws SQLException{
         ObservableList<Appointments> appointments= AppointmentQueries.getAppointmentsObservableList();
-        Appointments newAppointment = new Appointments(Integer.parseInt(appointmentIdTextfield.getText()), Timestamp.valueOf(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem())), Timestamp.valueOf(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem())));
+        Appointments newAppointment = new Appointments(999, Timestamp.valueOf(LocalDateTime.of(startDatePicker.getValue(), startTimeCombo.getSelectionModel().getSelectedItem())), Timestamp.valueOf(LocalDateTime.of(endDatePicker.getValue(), endTimeCombo.getSelectionModel().getSelectedItem())));
 
         for (Appointments appointment :
                 appointments) {
-            if(appointment.getAppointmentId() != newAppointment.getAppointmentId()){
                 if(appointment.getStartTime().before(newAppointment.getEndTime()) && appointment.getEndTime().after(newAppointment.getStartTime())){
                     Main.createAlert(Alert.AlertType.ERROR, "Appointments must not be overlapping.");
                     return false;
                 }
             }
-        }
         return true;
     }
 
@@ -297,7 +295,7 @@ public class AppointmentsController implements Initializable {
      */
     private void fillType(){
         ObservableList<String> typeList = FXCollections.observableArrayList();
-        typeList.addAll("New Inquiry", "Follow-Up", "Procedure", "Consultation");
+        typeList.addAll("Emergency", "Check-Up", "Procedure", "Consultation");
         typeCombo.setItems(typeList);
     }
 
@@ -360,8 +358,9 @@ public class AppointmentsController implements Initializable {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+            if(!appointmentIdList.isEmpty()){
             int apptId = Collections.max(appointmentIdList)+1;
-            appointmentIdTextfield.setText(String.valueOf(apptId));
+            appointmentIdTextfield.setText(String.valueOf(apptId));}
         }
         saveButton.setOnAction(e->{
             if(!action){

@@ -92,3 +92,16 @@ Username: test attempted to login on 2022-10-30T18:13:13.006652700America/New_Yo
 Username: test attempted to login on 2022-10-30T18:13:56.083392400America/New_York Result: Success
 Username: test attempted to login on 2022-10-31T13:27:20.344345600America/New_York Result: Success
 Username: test attempted to login on 2022-10-31T13:31:27.190830800America/New_York Result: Success
+Username:  attempted to login on 2022-10-31T13:59:00.069394300America/New_York Result: Failure
+Username: test attempted to login on 2022-10-31T13:59:01.550248400America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:04:14.053539America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:05:15.996117800America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:05:38.009000600America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:05:59.515472America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:07:59.841491800America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:11:15.553841500America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:15:23.163788900America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T14:21:16.554129700America/New_York Result: Success
+Username: test attempted to login on 2022-10-31T18:47:42.611289200America/New_York Result: Success
+Username: test attempted to login on 2022-11-01T16:52:46.895388400America/New_York Result: Success
+Username: test attempted to login on 2022-11-01T16:55:43.185758900America/New_York Result: Success
