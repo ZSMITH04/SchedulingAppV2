@@ -85,8 +85,8 @@ public class ReportsController implements Initializable {
      */
     private void variableComboBoxAction(){
         if(contactRadio.isSelected()){
-            hideTypeColumns();
-            showAppointmentColumns();
+            showTypeColumns(false);
+            showAppointmentColumns(true);
             String contactName = variableComboBox.getSelectionModel().getSelectedItem();
             ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentsByContactName(contactName);
             colApptId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
@@ -99,8 +99,8 @@ public class ReportsController implements Initializable {
             appointmentsTableView.setItems(appointmentsObservableList);
 
         }else if(customerRadio.isSelected()){
-            hideTypeColumns();
-            showAppointmentColumns();
+            showTypeColumns(false);
+            showAppointmentColumns(true);
             String customerName = variableComboBox.getSelectionModel().getSelectedItem();
             ObservableList<Appointments> appointmentsObservableList = AppointmentQueries.getAppointmentsObservableListByCustomerName(customerName);
             colApptId.setCellValueFactory(new PropertyValueFactory<>("appointmentId"));
@@ -126,36 +126,22 @@ public class ReportsController implements Initializable {
         }
         Main.closeScene(exitButton);
     }
-    private void hideAppointmentColumns(){
-        colApptId.setVisible(false);
-        colCustomerId.setVisible(false);
-        colStart.setVisible(false);
-        colEnd.setVisible(false);
-        colDescr.setVisible(false);
-        colTitle.setVisible(false);
-        colType.setVisible(false);
+    private void showAppointmentColumns(boolean visible){
+        colApptId.setVisible(visible);
+        colCustomerId.setVisible(visible);
+        colStart.setVisible(visible);
+        colEnd.setVisible(visible);
+        colDescr.setVisible(visible);
+        colTitle.setVisible(visible);
+        colType.setVisible(visible);
     }
-    private void hideTypeColumns(){
-        colMonth.setVisible(false);
-        colType2.setVisible(false);
-        colTotal.setVisible(false);
-        colYear.setVisible(false);
+    private void showTypeColumns(boolean visible){
+        colMonth.setVisible(visible);
+        colType2.setVisible(visible);
+        colTotal.setVisible(visible);
+        colYear.setVisible(visible);
     }
-    private void showTypeColumns(){
-        colMonth.setVisible(true);
-        colType2.setVisible(true);
-        colTotal.setVisible(true);
-        colYear.setVisible(true);
-    }
-    private void showAppointmentColumns(){
-        colApptId.setVisible(true);
-        colCustomerId.setVisible(true);
-        colStart.setVisible(true);
-        colEnd.setVisible(true);
-        colDescr.setVisible(true);
-        colTitle.setVisible(true);
-        colType.setVisible(true);
-    }
+
 
 
     @Override
@@ -175,8 +161,8 @@ public class ReportsController implements Initializable {
         tg.selectedToggleProperty().addListener((observableValue, toggle, t1) -> {
             if(t1.equals(customerRadio)){
                 variableComboBox.setVisible(true);
-                hideTypeColumns();
-                showAppointmentColumns();
+                showTypeColumns(false);
+                showAppointmentColumns(true);
                 ObservableList<String> customerNames = FXCollections.observableArrayList();
                 ObservableList<Customers> customers = null;
                 try {
@@ -193,8 +179,8 @@ public class ReportsController implements Initializable {
             }
             if(t1.equals(typeRadio)){
                 variableComboBox.setVisible(false);
-                hideAppointmentColumns();
-                showTypeColumns();
+                showAppointmentColumns(false);
+                showTypeColumns(true);
                 appointmentsTableView.setItems(AppointmentQueries.getAppointmentCounts());
                 colMonth.setCellValueFactory(new PropertyValueFactory<>("month"));
                 colType2.setCellValueFactory(new PropertyValueFactory<>("type"));
@@ -203,8 +189,8 @@ public class ReportsController implements Initializable {
             }
             if(t1.equals(contactRadio)){
                 variableComboBox.setVisible(true);
-                hideTypeColumns();
-                showAppointmentColumns();
+                showTypeColumns(false);
+                showAppointmentColumns(true);
                 ObservableList<String> contactNames = FXCollections.observableArrayList();
                 ObservableList<Contacts> contacts = ContactQueries.getContactsObservableList();
                 for (Contacts contact : contacts

@@ -9,7 +9,6 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Controllers.JDBC;
 import java.io.IOException;
-import java.time.ZoneId;
 import java.util.Locale;
 import java.util.Objects;
 import java.util.ResourceBundle;
@@ -38,6 +37,7 @@ public class Main extends Application {
         Scene scene = new Scene(root);
         secondaryStage.setScene(scene);
         secondaryStage.sizeToScene();
+        secondaryStage.setTitle("Scheduling Application");
         secondaryStage.setResizable(false);
         secondaryStage.show();
     }
