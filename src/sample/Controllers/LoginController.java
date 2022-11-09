@@ -125,7 +125,7 @@ public class LoginController implements Initializable {
      */
     @Override
     public void initialize (URL url, ResourceBundle resourceBundle){
-        // Locale.setDefault(new Locale("fr"));
+
         ZoneId zoneID = ZoneId.systemDefault();
         LocationLabel.setText(String.valueOf(zoneID));
         ExitButton.setText(rb.getString("exit"));

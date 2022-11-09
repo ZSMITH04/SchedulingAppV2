@@ -9,7 +9,7 @@ import javafx.scene.control.Button;
 import javafx.stage.Stage;
 import sample.Controllers.JDBC;
 import java.io.IOException;
-import java.util.Locale;
+
 import java.util.Objects;
 import java.util.ResourceBundle;
 
@@ -20,7 +20,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("Views/login.fxml"));
+        Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("Views/login.fxml")));
         primaryStage.setTitle(rb.getString("title"));
         primaryStage.setScene(new Scene(root, 450, 400));
         primaryStage.show();
@@ -46,7 +46,7 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        Locale.setDefault(Locale.FRANCE);
+
 
         JDBC.makeConnection();
         launch(args);
