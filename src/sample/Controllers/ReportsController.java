@@ -140,7 +140,11 @@ public class ReportsController implements Initializable {
     }
 
 
-
+    /**
+     * Lambda used here to add a listener to the reports toggle group
+     * @param url
+     * @param resourceBundle
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
 

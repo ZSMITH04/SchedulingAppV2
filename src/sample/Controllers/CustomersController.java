@@ -205,6 +205,9 @@ public class CustomersController implements Initializable {
     }
 
     /**
+     * Lambda used here to set the on action of the save button in a concise manner based on the
+     * input from the last scene.
+     *
      * Sets the on action of the save button determined by the button action previously taken to get to this view.
      * if modify, save existing, if add, save new.
      * @param url
