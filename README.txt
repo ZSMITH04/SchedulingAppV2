@@ -1,12 +1,9 @@
 Scheduling Application
-Zak Smith
-Zsmit75@wgu.edu
 Application Version 1.1
 IntelliJ IDEA 2021.2.4 (Ultimate Edition)
 Java SE 17.0.5
 OpenJFX 11.0
 MySQL 8.0.25
-
 
 USER GUIDE:
 
