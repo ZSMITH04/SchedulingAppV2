@@ -1,5 +1,5 @@
 Scheduling Application
-Application Version 1.1
+Application Version 2.1
 IntelliJ IDEA 2021.2.4 (Ultimate Edition)
 Java SE 17.0.5
 OpenJFX 11.0
